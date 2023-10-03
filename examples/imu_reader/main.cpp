@@ -6,6 +6,7 @@
 
 // We need this file for our sleep function.
 #include "vn/thread.h"
+#include "motionVector.h"
 
 using namespace std;
 using namespace vn::math;
@@ -15,7 +16,8 @@ using namespace vn::xplat;
 
 // Method declarations for future use.
 void asciiAsyncMessageReceived(void* userData, Packet& p, size_t index);
-void asciiOrBinaryAsyncMessageReceived(void* userData, Packet& p, size_t index);
+
+motionVector currentMotionVector = motionVector();
 
 int main(int argc, char *argv[])
 {
@@ -62,16 +64,23 @@ void asciiAsyncMessageReceived(void* userData, Packet& p, size_t index)
 	vec3f velocity;
 	vec3f acceleration;
 	vec3f angularRate;
+	
 	p.parseVNISL(&ypr, &lla, &velocity, &acceleration, &angularRate);
 
-	cout << "YPR: " << ypr << endl;
-	cout << "lla: " << lla << endl;
-	cout << "velocity: " << velocity << endl;
-	cout << "acceleration: " << acceleration << endl;
-	cout << "angularRate: " << angularRate << endl;
-  }
+	// cout << "YPR: " << ypr << endl;
+	// cout << "lla: " << lla << endl;
+	// cout << "velocity: " << velocity << endl;
+	// cout << "acceleration: " << acceleration << endl;
+	// cout << "angularRate: " << angularRate << endl;
 
-  else {
+	currentMotionVector.setLLA(lla);
+	currentMotionVector.setSpeed();
+	currentMotionVector.setHeading();
+	currentMotionVector.setYawRate();
+	currentMotionVector.setAcceleration();
+	currentMotionVector.setOrientation();
+
+  } else {
     cout << "ASCII Async: Type(" << p.determineAsciiAsyncType() << ")" << endl;
   }
 }
