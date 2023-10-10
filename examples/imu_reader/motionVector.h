@@ -6,7 +6,7 @@
 
 using namespace vn::math;
 
-class motionVector
+class MotionVector
 {
 	private:
 

@@ -1,54 +1,54 @@
 #include "motionVector.h"
 
-void motionVector::setLLA(vec3d lla){
+void MotionVector::setLLA(vec3d lla){
 	this->lla = lla;
 }
 
-void motionVector::setSpeed(float speed){
+void MotionVector::setSpeed(float speed){
 	this->speed = speed;
 }
 
-void motionVector::setHeading(float heading){
+void MotionVector::setHeading(float heading){
 	this->heading = heading;
 }
 
-void motionVector::setYawRate(float yawRate){
+void MotionVector::setYawRate(float yawRate){
 	this->yawRate = yawRate;
 }
 
-void motionVector::setAcceleration(float acceleration) {
+void MotionVector::setAcceleration(float acceleration) {
 	this->acceleration = acceleration;
 }
 
-void motionVector::setOrientation(float orientation) {
+void MotionVector::setOrientation(float orientation) {
 	this->orientation = orientation;
 }
 
-vec3d motionVector::getLLA() {
+vec3d MotionVector::getLLA() {
 	return this->lla;
 }
 
-float motionVector::getSpeed() {
+float MotionVector::getSpeed() {
 	return this->speed;
 }
 
-float motionVector::getHeading() {
+float MotionVector::getHeading() {
 	return this->heading;
 }
 
-float motionVector::getYawRate() {
+float MotionVector::getYawRate() {
 	return this->yawRate;
 }
 
-float motionVector::getAcceleration() {
+float MotionVector::getAcceleration() {
 	return this->acceleration;
 }
 
-float motionVector::getOrientation() {
+float MotionVector::getOrientation() {
 	return this->orientation;
 }
 
-std::string motionVector::toString() const {
+std::string MotionVector::toString() const {
 
     // Use a função std::to_string() para converter os membros para strings
     std::string result = "[" + std::to_string(this->lla[0]) + ",";

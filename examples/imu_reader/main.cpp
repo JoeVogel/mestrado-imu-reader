@@ -21,7 +21,7 @@ using namespace vn::xplat;
 // Now let's create a VnSensor object and use it to connect to our sensor.
 VnSensor vs;
 
-motionVector currentMotionVector = motionVector();
+MotionVector currentMotionVector = MotionVector();
 
 // Method declarations for future use.
 void signalHandler(int signum);
