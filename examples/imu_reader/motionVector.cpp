@@ -1,5 +1,10 @@
 #include "motionVector.h"
 
+
+void MotionVector::setTime(double time){
+	this->time = time;
+}
+
 void MotionVector::setLLA(vec3d lla){
 	this->lla = lla;
 }
@@ -22,6 +27,10 @@ void MotionVector::setAcceleration(float acceleration) {
 
 void MotionVector::setOrientation(float orientation) {
 	this->orientation = orientation;
+}
+
+double MotionVector::getTime() {
+	return this->time;
 }
 
 vec3d MotionVector::getLLA() {

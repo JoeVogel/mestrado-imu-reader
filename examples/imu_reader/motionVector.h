@@ -10,6 +10,7 @@ class MotionVector
 {
 	private:
 
+		double time;
 		vec3d lla;
 		float speed;
 		float heading;
@@ -19,6 +20,7 @@ class MotionVector
 		
 	public:
 
+		void setTime(double time);
 		void setLLA(vec3d lla);
 		void setSpeed(float speed);
 		void setHeading(float heading);
@@ -26,6 +28,7 @@ class MotionVector
 		void setAcceleration(float acceleration);
 		void setOrientation(float orientation);
 
+		double getTime();
 		vec3d getLLA();
 		float getSpeed();
 		float getHeading();

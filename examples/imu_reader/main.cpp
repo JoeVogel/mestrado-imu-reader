@@ -46,8 +46,8 @@ int main(int argc, char *argv[])
 			vs.writeAsyncDataOutputType(VNINS);
 		}
 		
-		AsciiAsync asyncType = vs.readAsyncDataOutputType();
-		cout << "ASCII Async Type: " << asyncType << endl;
+		// AsciiAsync asyncType = vs.readAsyncDataOutputType();
+		// cout << "ASCII Async Type: " << asyncType << endl;
 
 		vs.registerAsyncPacketReceivedHandler(NULL, asciiAsyncMessageReceived);
 
@@ -120,12 +120,14 @@ void asciiAsyncMessageReceived(void* userData, Packet& p, size_t index)
 
 		p.parseVNINS(&time, &week, &status, &ypr, &lla, &velocity_NED, &attUncertainty, &posUncertainty, &velUncertainty);
 
+		double dt = time - currentMotionVector.getTime();
 		vec2f NED_vel_New = vec2f(velocity_NED.x,velocity_NED.y);
 		vec2f NED_vel_Old = vec2f(currentMotionVector.getSpeed()*cos(currentMotionVector.getOrientation()),
 								currentMotionVector.getSpeed()*sin(currentMotionVector.getOrientation()));
 		vec2f delta_velocity = NED_vel_New-NED_vel_Old;
 		float dyaw = deg2rad(ypr.x)-currentMotionVector.getOrientation();
 
+		currentMotionVector.setTime(time);
 		currentMotionVector.setLLA(lla);
 		currentMotionVector.setSpeed(velocity_NED.mag());
 		currentMotionVector.setHeading(acos(velocity_NED.norm().x));
