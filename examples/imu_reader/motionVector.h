@@ -1,3 +1,7 @@
+#ifndef MOTIONVECTOR_H
+#define MOTIONVECTOR_H
+
+#include <string>
 #include "vn/sensors.h"
 
 using namespace vn::math;
@@ -28,7 +32,9 @@ class motionVector
 		float getYawRate();
 		float getAcceleration();
 		float getOrientation();
-		
 
+		std::string toString() const;
 
 };
+
+#endif // MOTIONVECTOR_H

@@ -47,3 +47,18 @@ float motionVector::getAcceleration() {
 float motionVector::getOrientation() {
 	return this->orientation;
 }
+
+std::string motionVector::toString() const {
+
+    // Use a função std::to_string() para converter os membros para strings
+    std::string result = "[" + std::to_string(this->lla[0]) + ",";
+	result += std::to_string(this->lla[1]) + ",";
+	result += std::to_string(this->lla[2]) + ",";
+	result += std::to_string(this->speed) + ",";
+	result += std::to_string(this->heading) + ",";
+	result += std::to_string(this->yawRate) + ",";
+	result += std::to_string(this->acceleration) + ",";
+	result += std::to_string(this->orientation) + "]";
+
+    return result;
+}
